@@ -1,0 +1,14 @@
+﻿@model Cardset
+
+<h3 class="my-5">
+    @Model.CardSetName
+</h3>
+
+<div class="row gx-5">
+    <img alt="@Model.CardSetName" src="@Model.ImageUrl" class="img-fluid col-5" />
+    <div class="col-7">
+        <h5>@Model.Description</h5>
+        <p><a href="/CardSet/Table">Back to Table View</a></p>
+    </div>
+</div>
+

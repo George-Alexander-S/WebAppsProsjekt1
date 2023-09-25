@@ -1,0 +1,30 @@
+﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{B7B217FC-F400-42BC-AB0B-B1381BAE613A}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WebAppsProsjekt1/Models/Cardset.cs">
+    <Files>
+      <File FileName="WebAppsProsjekt1/Models/Cardset.cs" Line="12" Column="2" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="WebAppsProsjekt1">
+            <Node name="WebAppsProsjekt1">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models">
+                <Node name="Cardset.cs" selected="True" />
+              </Node>
+              <Node name="Properties" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Shared" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+  <MonoDevelop.Ide.ItemProperties.WebAppsProsjekt1 PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+</Properties>
