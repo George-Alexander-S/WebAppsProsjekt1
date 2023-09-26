@@ -1,0 +1,11 @@
+@model Cardset
+
+<h1>@Model.Name</h1>
+
+<div>
+    @foreach (var card in Model.FlashCards)
+    {
+        <p>@card.FrontText</p>
+        <p>@card.BackText</p>
+    }
+</div>
