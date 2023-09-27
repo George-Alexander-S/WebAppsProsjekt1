@@ -7,10 +7,10 @@ public class FlashCard
     public string BackText { get; set; }
     public string? ImageUrl { get; set; }
 
-    public FlashCard(int CardId, string FrontText, string BackText)
+    public FlashCard(int cardId, string frontText, string backText)
     {
-        this.CardId = CardId;
-        this.FrontText = FrontText;
-        this.BackText = BackText;
+        this.CardId = cardId;
+        this.FrontText = frontText;
+        this.BackText = backText;
     }
 }

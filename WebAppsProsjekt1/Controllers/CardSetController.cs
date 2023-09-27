@@ -106,7 +106,23 @@ public class CardSetController : Controller
         _cardDbContext.SaveChanges();
         return RedirectToAction(nameof(Table));
     }
-
+    
+    public IActionResult Play()
+    {
+        var cardset = new Cardset();
+        cardset.CardSetId = 78;
+        cardset.CardSetName = "Test";
+        cardset.Description = "Test for play";
+        var cardlist = new List<FlashCard>();
+        cardset.CardList = cardlist;
+        var card1 = new FlashCard(1, "Hva er meningen med livet?", "42");
+        var card2 = new FlashCard(2, "Hva er klokka?", "Noe som viser tiden");
+        cardlist.Add(card1);
+        cardlist.Add(card2);
+        
+        ViewBag.CurrentViewName = "Test flashcard";
+        return View(cardset);
+    }
 
     //public List<Cardset> GetCardsets()
     //{
