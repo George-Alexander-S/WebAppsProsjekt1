@@ -1,0 +1,23 @@
+@model FlashCard
+
+<h2>Make a FlashCard!</h2>
+
+<form asp-action="CreateCard">
+    <div class="form-group">
+        <label asp-for="FrontText"></label><span class="text-danger">*</span>
+        <input asp-for="FrontText" class="form-control"/>
+        <span asp-validation-for="FrontText" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BackText"></label><span class="text-danger">*</span>
+        <input asp-for="BackText" class="form-control"/>
+        <span asp-validation-for="BackText" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ImageUrl"></label>
+        <input asp-for="ImageUrl" class="form-control"/>
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back to Home</a>
+</form>
