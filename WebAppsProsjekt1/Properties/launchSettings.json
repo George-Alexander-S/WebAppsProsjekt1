@@ -11,7 +11,7 @@
     "WebAppsProsjekt1": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "cardset/table",
+      "launchUrl": "",
       "applicationUrl": "https://localhost:7068;http://localhost:5126",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
