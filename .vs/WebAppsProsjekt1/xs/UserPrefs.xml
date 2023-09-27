@@ -1,30 +1,43 @@
-﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{B7B217FC-F400-42BC-AB0B-B1381BAE613A}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="WebAppsProsjekt1/Models/Cardset.cs">
+﻿<Properties StartupConfiguration="{B7B217FC-F400-42BC-AB0B-B1381BAE613A}|Default" GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="WebAppsProsjekt1/Controllers/CardSetController.cs">
     <Files>
+      <File FileName="WebAppsProsjekt1/Controllers/CardSetController.cs" Line="37" Column="28" />
+      <File FileName="WebAppsProsjekt1/ViewModels/CardListViwModel.cs" Line="14" Column="35" />
+      <File FileName="WebAppsProsjekt1/Views/Shared/_CardTable.cshtml" Line="1" Column="1" />
       <File FileName="WebAppsProsjekt1/Models/Cardset.cs" Line="12" Column="2" />
+      <File FileName="WebAppsProsjekt1/Views/CardSet/Edit.cshtml" />
+      <File FileName="WebAppsProsjekt1/Views/CardSet/Delete.cshtml" Line="8" Column="11" />
+      <File FileName="WebAppsProsjekt1/Models/CardDbContext.cs" Line="1" Column="1" />
+      <File FileName="WebAppsProsjekt1/Models/FlashCard.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="WebAppsProsjekt1">
-            <Node name="WebAppsProsjekt1">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Models">
-                <Node name="Cardset.cs" selected="True" />
+            <Node name="WebAppsProsjekt1" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="CardSetController.cs" selected="True" />
               </Node>
+              <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
+              <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
+                <Node name="CardSet" expanded="True" />
+                <Node name="Home" expanded="True" />
                 <Node name="Shared" expanded="True" />
               </Node>
+              <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints />
   <MonoDevelop.Ide.ItemProperties.WebAppsProsjekt1 PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>
