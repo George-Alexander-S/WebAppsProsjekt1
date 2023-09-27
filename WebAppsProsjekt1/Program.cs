@@ -12,7 +12,14 @@ builder.Services.AddDbContext<CardDbContext>(options => {
 
 var app = builder.Build();
 
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+    DBInit.Seed(app);
+}
+
 app.UseStaticFiles();
+
 
 app.MapDefaultControllerRoute();
 
