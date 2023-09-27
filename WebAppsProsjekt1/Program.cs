@@ -12,6 +12,8 @@ builder.Services.AddDbContext<CardDbContext>(options => {
 
 var app = builder.Build();
 
+app.UseStaticFiles();
+
 app.MapDefaultControllerRoute();
 
 app.Run();

@@ -3,3 +3,11 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+WebAppsProsjekt1/node_modules
+.idea
+WebAppsProsjekt1/package-lock.json
+WebAppsProsjekt1/package.json
+WebAppsProsjekt1/wwwroot/lib/node_modules/
+WebAppsProsjekt1/wwwroot/lib/package-lock.json
+WebAppsProsjekt1/wwwroot/lib/package.json
+WebAppsProsjekt1/wwwroot/package-lock.json
