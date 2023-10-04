@@ -1,46 +1,90 @@
 @model FlashCard
 
+<link rel="stylesheet" asp-href-include="~/css/createCard.css">
+<style>
+   
+</style>
+
 <h2>Make a FlashCard!</h2>
-<div class="container bg-info rounded">
-<form asp-action="CreateCard">
-    <div class="form-group">
-        <label asp-for="FrontText"></label><span class="text-danger">*</span>
-        <input asp-for="FrontText" class="form-control" id="FrontText"/>
-        <span asp-validation-for="FrontText" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="BackText"></label><span class="text-danger">*</span>
-        <input asp-for="BackText" class="form-control" id="BackText"/>
-        <span asp-validation-for="BackText" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="ImageUrl"></label>
-        <input asp-for="ImageUrl" class="form-control" id="ImageUrl"/>
-        <span asp-validation-for="ImageUrl" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back to Home</a>
-</form>
+<div class="container rounded p-2" style="background-color: skyblue">
+    <form asp-action="CreateCard">
+        <div class="form-group">
+            <label asp-for="FrontText"></label><span class="text-danger">*</span>
+            <input asp-for="FrontText" class="form-control" id="FrontText"/>
+            <span asp-validation-for="FrontText" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="BackText"></label><span class="text-danger">*</span>
+            <input asp-for="BackText" class="form-control" id="BackText"/>
+            <span asp-validation-for="BackText" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ImageUrl"></label>
+            <input asp-for="ImageUrl" class="form-control" id="ImageUrl"/>
+            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+        </div>
+        <div class="m-2">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back to Home</a>
+        </div>
+    </form>
 </div>
 
-<div class="container pt-5 bg-light">
+<div class="container pt-3 bg-light" style="display: flex; justify-content: center">
+    <div class="flippable">
+        <div class="flip-card-inner">
+            <div class="flip-card-frontside">
+                <h3 id="FrontSpinText"></h3>
+                <img src=""></img>
+                <div id="frontSidePreview">
+
+                </div>
+            </div>
+            <div class="flip-card-backside">
+                <h3 id="BackSpinText"></h3>
+                <img src=""></img>
+                <div id="backSidePreview"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container pt-3 bg-light">
     <h2 class="pb-3">This is a preview</h2>
-    <div class="rounded">
-        <div class="card border-info mb-3" style="width:500px; height:300px">
+    <div class="rounded" style="display: flex">
+        <div class="flip-card-front mb-3" style="">
             <div class="card-header">Korttittel? Tema? Hvem vet.</div>
             <div class="card-body">
-                <h3 class="card-title"><div id="FrontPreview"></div></h3>
+                <h3 class="card-title">
+                    <div id="FrontPreview"></div></h3>
+            </div>
+        </div>
+        <div class="flip-card-back mb-3" style="">
+            <div class="card-header">Svaret er:</div>
+            <div class="card-body">
+                <h3 class="card-title">
+                    <div id="BackPreview"></div></h3>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    let frontText = document.getElementById("FrontText");
-    
-    frontText.addEventListener("input", function () {
-        document.getElementById("FrontPreview").textContent = frontText.value;
+function cardPreview() {
+        document.addEventListener("DOMContentLoaded", function () {
+        let frontText = document.getElementById("FrontText");
+        let backText = document.getElementById("BackText");
+
+        frontText.addEventListener("input", function () {
+            document.getElementById("FrontPreview").textContent = frontText.value;
+            document.getElementById("FrontSpinText").textContent = frontText.value;
+        });
+        
+        backText.addEventListener("input", function () {
+            document.getElementById("BackPreview").textContent = backText.value;
+            document.getElementById("BackSpinText").textContent = backText.value;
+        });
     });
-});
+}
+
+cardPreview();
 </script>
