@@ -1,0 +1,28 @@
+@model IEnumerable<WebAppsProsjekt1.Models.FlashCard>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <title>FlashCards</title>
+</head>
+<body>
+
+<div class="container">
+    <h1>@ViewBag.CurrentViewName</h1>
+    <table class="table table-striped">
+        <tr><th>CardId</th><th>FrontText</th></tr>
+        @foreach (var flashcard in Model)
+        {
+            <tr>
+                <td>@flashcard.CardId</td>
+                <td>@flashcard.FrontText</td>
+            </tr>
+        }
+    </table>
+    
+</div>
+</body>
+</html>

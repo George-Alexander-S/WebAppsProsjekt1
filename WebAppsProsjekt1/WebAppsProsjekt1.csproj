@@ -9,6 +9,7 @@
     <ItemGroup>
       <None Remove="Views\CardSet\" />
       <None Remove="ViewModels\" />
+      <None Include="wwwroot\css\createCard.css" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="ViewModels\" />
