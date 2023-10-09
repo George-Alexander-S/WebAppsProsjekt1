@@ -15,10 +15,10 @@
 }
 
 .flippable {
+    border-radius: 10px;
     background-color: transparent;
     width: 500px;
     height: 300px;
-    border: 1px solid #f1f1f1;
     perspective: 1000px;
 }
 
@@ -44,12 +44,14 @@
 }
 
 .flip-card-frontside {
-    background-color: lightskyblue;
-    color: #0f5132;
+    border-radius: 10px;
+    border: 2px solid #0dcaf0;
+    color: black;
 }
 
 .flip-card-backside {
-    background-color: darkgoldenrod;
-    color: white;
+    border-radius: 10px;
+    border: 2px solid #b8860b;
+    color: black;
     transform: rotateY(180deg);
 }
