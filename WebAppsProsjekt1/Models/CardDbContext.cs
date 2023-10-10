@@ -13,5 +13,6 @@ public class CardDbContext : DbContext
     }
 
         public DbSet<Cardset> Cardsets { get; set; } // get cards and other info from ViewModels
+        public DbSet<FlashCard> FlashCards { get; set; }
 }
 

@@ -117,8 +117,14 @@ public class CardSetController : Controller
         cardset.Description = "Test for play";
         var cardlist = new List<FlashCard>();
         cardset.CardList = cardlist;
-        var card1 = new FlashCard(1, "Hva er meningen med livet?", "42");
-        var card2 = new FlashCard(2, "Hva er klokka?", "Noe som viser tiden");
+        var card1 = new FlashCard();
+        card1.FlashcardId = 1;
+        card1.FrontText = "Forside 1";
+        card1.BackText = "Bakside 1";
+        var card2 = new FlashCard();
+        card1.FlashcardId = 1;
+        card1.FrontText = "Forside 1";
+        card1.BackText = "Bakside 1";
         cardlist.Add(card1);
         cardlist.Add(card2);
         
