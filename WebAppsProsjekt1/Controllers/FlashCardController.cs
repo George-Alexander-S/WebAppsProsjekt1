@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebAppsProsjekt1.Models;
+using WebAppsProsjekt1.ViewModels;
 
 namespace WebAppsProsjekt1.Controllers;
 
@@ -11,7 +13,7 @@ public class FlashCardController : Controller
     {
         _cardDbContext = cardDbContext;
     }
-    public IActionResult FlashCardTable()
+    /*public IActionResult FlashCardTable()
     {
         var flashcards = new List<FlashCard>();
         var flashcard1 = new FlashCard();
@@ -32,6 +34,13 @@ public class FlashCardController : Controller
 
         ViewBag.CurrentViewName = "Flashcards";
         return View(flashcards);
+    } */
+
+    public async Task<ActionResult> FlashCardTable()
+    {
+        List<FlashCard> cards = await _cardDbContext.FlashCards.ToListAsync();
+        return View(cards);
+
     }
     
     [HttpGet]
