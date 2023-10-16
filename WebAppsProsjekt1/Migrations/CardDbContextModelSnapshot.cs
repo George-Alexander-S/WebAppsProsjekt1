@@ -47,6 +47,9 @@ namespace WebAppsProsjekt1.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("CardsetId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("FrontText")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -56,7 +59,25 @@ namespace WebAppsProsjekt1.Migrations
 
                     b.HasKey("FlashcardId");
 
+                    b.HasIndex("CardsetId");
+
                     b.ToTable("FlashCards");
+                });
+
+            modelBuilder.Entity("WebAppsProsjekt1.Models.FlashCard", b =>
+                {
+                    b.HasOne("WebAppsProsjekt1.Models.Cardset", "Cardset")
+                        .WithMany("CardList")
+                        .HasForeignKey("CardsetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cardset");
+                });
+
+            modelBuilder.Entity("WebAppsProsjekt1.Models.Cardset", b =>
+                {
+                    b.Navigation("CardList");
                 });
 #pragma warning restore 612, 618
         }
