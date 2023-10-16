@@ -36,6 +36,28 @@ namespace WebAppsProsjekt1.Migrations
 
                     b.ToTable("Cardsets");
                 });
+
+            modelBuilder.Entity("WebAppsProsjekt1.Models.FlashCard", b =>
+                {
+                    b.Property<int>("FlashcardId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("BackText")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FrontText")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("FlashcardId");
+
+                    b.ToTable("FlashCards");
+                });
 #pragma warning restore 612, 618
         }
     }
