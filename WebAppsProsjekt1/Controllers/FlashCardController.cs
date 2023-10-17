@@ -36,9 +36,10 @@ public class FlashCardController : Controller
         return View(flashcards);
     } */
 
-    public async Task<ActionResult> FlashCardTable()
+    public async Task<ActionResult> FlashCardTable(int id)
     {
         List<FlashCard> cards = await _cardDbContext.FlashCards.ToListAsync();
+        
         return View(cards);
 
     }

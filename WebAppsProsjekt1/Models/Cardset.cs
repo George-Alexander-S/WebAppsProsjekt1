@@ -8,7 +8,7 @@ public class Cardset
     public string? Description { get; set; }
     public string? ImageUrl { get;  set; }
     // navigation property
-    public virtual List<FlashCard> CardList {get; set;}
-
+    public List<FlashCard> CardList = new List<FlashCard>();
+    
     
 }
