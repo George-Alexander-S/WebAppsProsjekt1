@@ -108,54 +108,6 @@ public class CardSetController : Controller
         _cardDbContext.SaveChanges();
         return RedirectToAction(nameof(Table));
     }
-    // gjøre den til Async?
-    public IActionResult Play()
-    {
-        var cardset = new Cardset();
-        cardset.CardSetId = 78;
-        cardset.CardSetName = "Test";
-        cardset.Description = "Test for play";
-        var cardlist = new List<FlashCard>();
-        cardset.CardList = cardlist;
-        var card1 = new FlashCard();
-        card1.FlashcardId = 1;
-        card1.FrontText = "Forside 1";
-        card1.BackText = "Bakside 1";
-        var card2 = new FlashCard();
-        card1.FlashcardId = 1;
-        card1.FrontText = "Forside 1";
-        card1.BackText = "Bakside 1";
-        cardlist.Add(card1);
-        cardlist.Add(card2);
-        
-        ViewBag.CurrentViewName = "Test flashcard";
-        return View(cardset);
-    }
-
-    //public List<Cardset> GetCardsets()
-    //{
-
-    //var card = new List<Cardset>();
-
-
-    //var card1 = new Cardset();
-    //card1.CardSetId = 1;
-    //card1.CardSetName = "Nature";
-    //card1.Description = "Learning about nature";
-
-
-    //var card2 = new Cardset();
-    //card2.CardSetId = 2;
-    //card2.CardSetName = "Animals";
-    //card2.Description = "Learning about Animals";
-
-
-    //card.Add(card1);
-    //card.Add(card2);
-    //return card;
-
-
-    //}
 
 }
 

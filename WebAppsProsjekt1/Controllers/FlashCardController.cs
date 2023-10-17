@@ -13,28 +13,7 @@ public class FlashCardController : Controller
     {
         _cardDbContext = cardDbContext;
     }
-    /*public IActionResult FlashCardTable()
-    {
-        var flashcards = new List<FlashCard>();
-        var flashcard1 = new FlashCard();
-        var flashcard2 = new FlashCard();
-        var flashcard3 = new FlashCard();
-        flashcard1.FlashcardId = 1;
-        flashcard1.FrontText = "Forside 1";
-        flashcard1.BackText = "Bakside 1";
-        flashcard2.FlashcardId = 2;
-        flashcard2.FrontText = "Forside 2";
-        flashcard2.BackText = "Bakside 2";
-        flashcard3.FlashcardId = 3;
-        flashcard3.FrontText = "Forside 3";
-        flashcard3.BackText = "Bakside 3";
-        flashcards.Add(flashcard1);
-        flashcards.Add(flashcard2);
-        flashcards.Add(flashcard3);
-
-        ViewBag.CurrentViewName = "Flashcards";
-        return View(flashcards);
-    } */
+  
 
     public async Task<ActionResult> FlashCardTable(int id)
     {
@@ -45,21 +24,40 @@ public class FlashCardController : Controller
     }
     
     [HttpGet]
-    public IActionResult CreateCard()
+    public IActionResult CreateCard(int id)
     {
-        return View();
+        var createCardViewModel = new CreateCardViewModel();
+        createCardViewModel.csid = id;
+        return View(createCardViewModel);
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateCard(FlashCard flashcard)
+    public async Task<IActionResult> CreateCard(FlashCard flashCard)
     {
-        if (ModelState.IsValid)
+        try
         {
-            _cardDbContext.FlashCards.Add(flashcard); //referst do database 
+            var cardset = _cardDbContext.Cardsets.Find(flashCard.CardsetId);
+            if (cardset == null)
+            {
+                return BadRequest();
+            }
+
+            var newCard = new FlashCard
+            {
+                CardsetId = flashCard.CardsetId,
+                Cardset = cardset,
+                FrontText = flashCard.FrontText,
+                BackText = flashCard.BackText,
+                ImageUrl = flashCard.ImageUrl
+            };
+            _cardDbContext.FlashCards.Add(newCard);
             await _cardDbContext.SaveChangesAsync();
-            return RedirectToAction(nameof(FlashCardTable));
+            return RedirectToAction("CreateCard", "FlashCard", new { id = flashCard.CardsetId});
         }
-        return View(flashcard);
+        catch
+        {
+            return BadRequest("OrderItem creation failed.");
+        }
     }
     
     

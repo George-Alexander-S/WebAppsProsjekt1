@@ -12,7 +12,6 @@
       <None Include="wwwroot\css\createCard.css" />
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="ViewModels\" />
       <Folder Include="wwwroot\images\" />
     </ItemGroup>
     <ItemGroup>

@@ -10,5 +10,13 @@
         <h5>@Model.Description</h5>
         <p><a href="/CardSet/Table">Back to Table View</a></p>
     </div>
+    <div class="m-2">
+        <a class="btn btn-secondary"
+           asp-controller="FlashCard"
+           asp-action="CreateCard" asp-route-id="@Model.CardSetId">Create New flashcard</a>
+        <a class="btn btn-secondary"
+           asp-controller="FlashCard"
+           asp-action="FlashCardTable" asp-route-id="@Model.CardSetId">Play this set!</a>
+    </div>
 </div>
 
