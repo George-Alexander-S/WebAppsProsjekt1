@@ -38,7 +38,7 @@ public class FlashCardController : Controller
 
     public async Task<ActionResult> FlashCardTable(int id)
     {
-        List<FlashCard> cards = await _cardDbContext.FlashCards.ToListAsync();
+        var cards = await _cardDbContext.FlashCards.Where(c => c.CardsetId == id).ToListAsync();
         
         return View(cards);
 
