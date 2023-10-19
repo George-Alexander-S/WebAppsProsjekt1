@@ -20,13 +20,14 @@
             }
         }
         
-        let cardArray;
+        let contentPresent = false;
         
         $.ajax({
             url: "/GetCards",
             method: "GET",
             success: function (cards) {
                 document.querySelector(".carousel-inner").innerHTML = makeSlides(cards);
+                contentPresent = true;
             },
             error: function (error) {
                 console.log(error)
@@ -39,17 +40,17 @@
                let activeClass = index === 0 ? 'active' : '';
                
                html += '<div class="carousel-item ' + activeClass + '">';
-               html += '<div class="container" style="max-width: 600px">';
+               html += '<div class="container" style="max-width: 500px">';
                html += '<div class="container pt-3 bg-light" style="display: flex; justify-content: center">';
                html += '<div class="flippable">';
                html += '<div class="flip-card-inner" id="' + item.flashcardId + '" onclick="clickSpinner(this.id)">';
                html += '<div class="flip-card-frontside">';
-               html += '<h3 id="FrontSpinText">' + item.frontText + '</h3>';
+               html += '<h3 class="front-text" id="FrontSpinText">' + item.frontText + '</h3>';
                html += '<img src=""></img>';
                html += '<div id="frontSidePreview"></div>';
                html += '</div>';
                html += '<div class="flip-card-backside">';
-               html += '<h3 id="BackSpinText">' + item.backText + '</h3>';
+               html += '<h3 class="back-text" id="BackSpinText">' + item.backText + '</h3>';
                html += '<img src=""></img>';
                html += '<div id="backSidePreview"></div>';
                html += '</div>';
@@ -64,19 +65,22 @@
         </script>
 </head>
 <body>
-
-<div id="carouselExample" class="carousel slide">
+<div style="justify-content: space-between; position: relative">
+<div id="cardCarousel" class="carousel slide" style="justify-self: center; max-width: 700px; justify-content: center" data-bs-interval="false">
     <div class="carousel-inner">
     </div>
-  <button style="background-color: red" class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button style="background-color: red" class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+    <button style="background-color: #38598b; position: absolute; top: 50%; -ms-transform: translateY(-50%); transform:  translateY(-50%);" class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button style="background-color: #38598b; position: absolute; top: 50%; -ms-transform: translateY(-50%); transform:  translateY(-50%)" class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+    @*
+    <h4 class="position-absolute top-0 start-50 translate-middle">Click to reveal the answer!</h4>
+*@
 </div>
-
+</div>
 </body>
 </html>
