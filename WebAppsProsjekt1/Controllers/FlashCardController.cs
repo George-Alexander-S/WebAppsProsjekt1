@@ -13,28 +13,7 @@ public class FlashCardController : Controller
     {
         _cardDbContext = cardDbContext;
     }
-    /*public IActionResult FlashCardTable()
-    {
-        var flashcards = new List<FlashCard>();
-        var flashcard1 = new FlashCard();
-        var flashcard2 = new FlashCard();
-        var flashcard3 = new FlashCard();
-        flashcard1.FlashcardId = 1;
-        flashcard1.FrontText = "Forside 1";
-        flashcard1.BackText = "Bakside 1";
-        flashcard2.FlashcardId = 2;
-        flashcard2.FrontText = "Forside 2";
-        flashcard2.BackText = "Bakside 2";
-        flashcard3.FlashcardId = 3;
-        flashcard3.FrontText = "Forside 3";
-        flashcard3.BackText = "Bakside 3";
-        flashcards.Add(flashcard1);
-        flashcards.Add(flashcard2);
-        flashcards.Add(flashcard3);
-
-        ViewBag.CurrentViewName = "Flashcards";
-        return View(flashcards);
-    } */
+    
 
     public async Task<ActionResult> FlashCardTable()
     {
@@ -59,6 +38,13 @@ public class FlashCardController : Controller
             return RedirectToAction(nameof(FlashCardTable));
         }
         return View(flashcard);
+    }
+
+    [HttpGet("/GetCards")]
+    public async Task<IActionResult> GetCards()
+    {
+        List<FlashCard> cards = await _cardDbContext.FlashCards.ToListAsync();
+        return Json(cards);
     }
     
     
