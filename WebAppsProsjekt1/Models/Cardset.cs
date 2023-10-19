@@ -9,6 +9,5 @@ public class Cardset
     public string? ImageUrl { get;  set; }
     
     public List<FlashCard> CardList = new List<FlashCard>();
-
     
 }
