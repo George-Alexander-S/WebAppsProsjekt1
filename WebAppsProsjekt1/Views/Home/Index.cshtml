@@ -1,8 +1,35 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
 
-<div class="text-center">
-    <h1 class="display-4">Flashcards</h1>
-    <p>Make your own flashcards. Create, play and learn</p>
+<div class="home-container">
+    <img src="/images/homescreen.jpg" class="cover-full-screen" alt="FlipCardMainPhoto">
+    <div class="text-block">
+        <h2>Unlock your learning potential with Flash Cards</h2>
+        <p>Welcome to our website, where learning meets convenience. We believe that the journey to knowledge should be as enjoyable as it is educational, and that's why we're excited to introduce you to our digital flash cards.</p>
+
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <a href="~/Identity/Account/Manage" class="sign-button btn btn-main">Manage Account</a>
+        } else
+        {
+            <a href="~/Identity/Account/Register" class="sign-button btn btn-main" >Sign up now</a>
+        }
+        
+    </div>
+</div>
+<div class="centered-container">
+    <h1>The versatile learning companion</h1>
+    <p>Whether you're a student looking to ace your exams, a professional aiming to expand your knowledge, or just someone eager to explore new subjects, our flash cards can be your trusty sidekick.</p>
+    <p>Simplify your learning journey with us. Explore our wide range of flash card sets, or create your own. Learning has never been this accessible, engaging, and effective. Try our digital flash cards today and unlock your learning potential!</p>
+    <a href="~/FlashCard/CreateCard" class="btn btn-main" >Start you learning now!</a>
+    <img src="/images/flashcards.png" width="700" />
+</div>
+
+<div class="centered-container">
+    <h1>Introducing our Flash Card Collections Carousel</h1>
+    <p>Discover an engaging way to explore a world of knowledge with our Flash Card Collections Carousel. It's your gateway to a diverse array of themed flash card sets, carefully curated to enhance your learning experience. Whether you're delving into academic subjects, brushing up on professional skills, or simply satisfying your curiosity, our carousel offers a dynamic selection of flash card collections.</p>
+    <p>Choose from a variety of topics and subjects that pique your interest, or create your own custom sets. With our Flash Card Collections Carousel, the journey to learning has never been more exciting. Start your exploration today and unlock the potential of interactive and effective learning.</p>
 </div>

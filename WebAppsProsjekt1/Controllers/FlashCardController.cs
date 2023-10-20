@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAppsProsjekt1.Models;
 using WebAppsProsjekt1.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebAppsProsjekt1.Controllers;
 
@@ -23,12 +24,14 @@ public class FlashCardController : Controller
     }
     
     [HttpGet]
+    [Authorize]
     public IActionResult CreateCard()
     {
         return View();
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> CreateCard(FlashCard flashcard)
     {
         if (ModelState.IsValid)
