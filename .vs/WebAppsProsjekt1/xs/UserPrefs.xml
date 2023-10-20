@@ -1,38 +1,28 @@
 ﻿<Properties StartupConfiguration="{B7B217FC-F400-42BC-AB0B-B1381BAE613A}|Default" GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="WebAppsProsjekt1/Models/CardDbContext.cs">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="WebAppsProsjekt1/Program.cs">
     <Files>
+      <File FileName="../../Downloads/MyShop-13-Security/MyShop/Program.cs" />
       <File FileName="WebAppsProsjekt1/Controllers/CardSetController.cs" />
-      <File FileName="WebAppsProsjekt1/Models/CardDbContext.cs" Line="18" Column="1" />
+      <File FileName="WebAppsProsjekt1/Models/CardDbContext.cs" />
+      <File FileName="WebAppsProsjekt1/Views/Home/Index.cshtml" />
+      <File FileName="WebAppsProsjekt1/Views/CardSet/Table.cshtml" />
+      <File FileName="WebAppsProsjekt1/Program.cs" Line="24" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="WebAppsProsjekt1">
-            <Node name="WebAppsProsjekt1" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Migrations" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="CardDbContext.cs" selected="True" />
-              </Node>
-              <Node name="Views" expanded="True">
-                <Node name="CardSet" expanded="True" />
-              </Node>
-              <Node name="wwwroot" expanded="True">
-                <Node name="css" expanded="True" />
-                <Node name="js" expanded="True" />
-              </Node>
-              <Node name="appsettings.json" expanded="True" />
-            </Node>
+            <Node name="WebAppsProsjekt1" expanded="True" />
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.WebAppsProsjekt1 PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.WebAppsProsjekt1 PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>

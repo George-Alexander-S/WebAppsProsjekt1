@@ -6,8 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAppsProsjekt1.Models;
 using WebAppsProsjekt1.ViewModels;
-
-
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace WebAppsProsjekt1.Controllers;
@@ -44,12 +43,14 @@ public class CardSetController : Controller
 
 
     [HttpGet]
+    [Authorize]
     public IActionResult Create()
     {
         return View();
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> Create(Cardset card)
     {
         if (ModelState.IsValid)
@@ -63,6 +64,7 @@ public class CardSetController : Controller
 
 
     [HttpGet]
+    [Authorize]
     public async Task<IActionResult> Edit(int id)
     {
         var card = await _cardDbContext.Cardsets.FindAsync(id);
@@ -74,6 +76,7 @@ public class CardSetController : Controller
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> Edit(Cardset card)
     {
         if (ModelState.IsValid)
@@ -86,6 +89,7 @@ public class CardSetController : Controller
     }
 
     [HttpGet]
+    [Authorize]
     public async Task<IActionResult> Delete(int id)
     {
         var card = await _cardDbContext.Cardsets.FindAsync(id);
@@ -97,6 +101,7 @@ public class CardSetController : Controller
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
         var card = await _cardDbContext.Cardsets.FindAsync(id);
