@@ -1,4 +1,4 @@
-@model FlashCard
+@model CreateCardViewModel
 
 <link rel="stylesheet" asp-href-include="~/css/createCard.css">
 <style>
@@ -9,23 +9,29 @@
 <div class="container rounded p-2" style="background-color: skyblue">
     <form asp-action="CreateCard">
         <div class="form-group">
-            <label asp-for="FrontText"></label><span class="text-danger">*</span>
-            <input asp-for="FrontText" placeholder="Enter frontside text here" class="form-control" id="FrontText"/>
-            <span asp-validation-for="FrontText" class="text-danger"></span>
+            <label asp-for="flashCard.FrontText"></label><span class="text-danger">*</span>
+            <input asp-for="flashCard.FrontText" class="form-control" id="FrontText"/>
+            <span asp-validation-for="flashCard.FrontText" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="BackText"></label><span class="text-danger">*</span>
-            <input asp-for="BackText" placeholder="Enter backside text here" class="form-control" id="BackText"/>
-            <span asp-validation-for="BackText" class="text-danger"></span>
+            <label asp-for="flashCard.BackText"></label><span class="text-danger">*</span>
+            <input asp-for="flashCard.BackText" class="form-control" id="BackText"/>
+            <span asp-validation-for="flashCard.BackText" class="text-danger"></span>
         </div>
-        @*<div class="form-group">
-            <label asp-for="ImageUrl"></label>
-            <input asp-for="ImageUrl" class="form-control" id="ImageUrl"/>
-            <span asp-validation-for="ImageUrl" class="text-danger"></span>
-        </div>*@
+        <div class="form-group">
+            <label asp-for="flashCard.ImageUrl"></label>
+            <input asp-for="flashCard.ImageUrl" class="form-control" id="ImageUrl"/>
+            <span asp-validation-for="flashCard.ImageUrl" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="flashCard.CardsetId"></label>
+            <input asp-for="flashCard.CardsetId" class="form-control" id="ImageUrl" value="@Model.csid"/>
+            <span asp-validation-for="flashCard.CardsetId" class="text-danger"></span>
+        </div>
         <div class="m-2">
             <button type="submit" class="btn btn-primary">Save</button>
-            <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back to Home</a>
+            <a asp-controller="CardSet" asp-action="Details" asp-route-id="@Model.csid" class="btn btn-secondary">Back to Cardset</a>
+            <a asp-controller="FlashCard" asp-action="FlashCardTable" asp-route-id="@Model.csid" class="btn btn-secondary">Play this set!</a>
         </div>
     </form>
 </div>

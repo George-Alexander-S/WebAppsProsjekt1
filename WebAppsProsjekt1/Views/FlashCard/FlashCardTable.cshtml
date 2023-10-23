@@ -1,4 +1,4 @@
-@model IEnumerable<WebAppsProsjekt1.Models.FlashCard>
+@model List<FlashCard>
 
 <!DOCTYPE html>
 
@@ -65,22 +65,42 @@
         </script>
 </head>
 <body>
-<div style="justify-content: space-between; position: relative">
-<div id="cardCarousel" class="carousel slide" style="justify-self: center; max-width: 700px; justify-content: center" data-bs-interval="false">
-    <div class="carousel-inner">
-    </div>
-    <button style="background-color: #38598b; position: absolute; top: 50%; -ms-transform: translateY(-50%); transform:  translateY(-50%);" class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button style="background-color: #38598b; position: absolute; top: 50%; -ms-transform: translateY(-50%); transform:  translateY(-50%)" class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-    @*
-    <h4 class="position-absolute top-0 start-50 translate-middle">Click to reveal the answer!</h4>
-*@
-</div>
+
+<div class="container">
+    <h1>@ViewBag.CurrentViewName</h1>
+    @foreach (var flashcard in Model)
+    {
+        <div class="container pt-3 bg-light" style="display: flex; justify-content: center">
+            <div class="flippable">
+                <div class="flip-card-inner">
+                    <div class="flip-card-frontside">
+                        <h3 id="FrontSpinText">@flashcard.FrontText</h3>
+                        <img src=""></img>
+                        <div id="frontSidePreview">
+
+                        </div>
+                    </div>
+                    <div class="flip-card-backside">
+                        <h3 id="BackSpinText">@flashcard.BackText</h3>
+                        <img src=""></img>
+                        <div id="backSidePreview"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    @*<table class="table table-striped">
+        <tr><th>CardId</th><th>FrontText</th></tr>
+        @foreach (var flashcard in Model)
+        {
+            <tr>
+                <td>@flashcard.CardId</td>
+                <td>@flashcard.FrontText</td>
+            </tr>
+        }
+    </table>*@
+
 </div>
 </body>
 </html>
