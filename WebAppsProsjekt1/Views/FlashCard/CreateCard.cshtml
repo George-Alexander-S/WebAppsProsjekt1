@@ -5,8 +5,11 @@
    
 </style>
 
-<h2>Make a FlashCard!</h2>
-<div class="container rounded p-2" style="background-color: skyblue">
+<body style="background-color:#04364A">
+<h2 style="color: white; display: block; margin-left: auto; margin-right: auto; margin-top: 80px; width: fit-content;">Make a FlashCard!</h2>
+
+
+<div class="container rounded p-2" style="background-color:#176B87">
     <form asp-action="CreateCard">
         <div class="form-group">
             <label asp-for="flashCard.FrontText"></label><span class="text-danger">*</span>
@@ -36,14 +39,13 @@
     </form>
 </div>
 
-<div class="container pt-3 bg-light" style="display: flex; justify-content: center">
+<div class="container pt-3" style="display: flex; justify-content: center; background-color:#176B87">
     <div class="flippable" onclick="clickSpinner()">
         <div class="flip-card-inner" id="flip-card-inner">
             <div class="flip-card-frontside">
                 <h3 id="FrontSpinText"></h3>
                 <img src=""></img>
                 <div id="frontSidePreview">
-
                 </div>
             </div>
             <div class="flip-card-backside">
@@ -55,18 +57,18 @@
     </div>
 </div>
 
-<div class="container pt-3 bg-light">
-            <h2 class="pb-1" style="text-align: center">Side by side view of both sides:</h2>
+<div class="container" style="background-color: #176B87">
+            <h2 class="pb-1" style="text-align: center; color: white;">Side by side view of both sides:</h2>
     <div class="rounded" style="display: flex; justify-content: space-evenly; align-items: center">
         <div class="flip-card-front mb-3 m-3" style="">
-            <div class="card-header" style="text-align: center">Front of card</div>
+            <div class="card-header" style="text-align: center; color: white;">Front of card</div>
             <div class="card-body">
                 <h3 class="card-title">
                     <div id="FrontPreview"></div></h3>
             </div>
         </div>
         <div class="flip-card-back mb-3 m-3" style="">
-            <div class="card-header" style="text-align: center">Back of card</div>
+            <div class="card-header" style="text-align: center; color: white;">Back of card</div>
             <div class="card-body">
                 <h3 class="card-title">
                     <div id="BackPreview"></div></h3>
@@ -74,6 +76,8 @@
         </div>
     </div>
 </div>
+
+</body>
 
 <script>
 
