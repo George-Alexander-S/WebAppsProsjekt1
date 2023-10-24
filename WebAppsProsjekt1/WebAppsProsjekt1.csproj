@@ -10,9 +10,11 @@
       <None Remove="Views\CardSet\" />
       <None Remove="ViewModels\" />
       <None Include="wwwroot\css\createCard.css" />
+      <None Remove="DAL\" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="wwwroot\images\" />
+      <Folder Include="DAL\" />
     </ItemGroup>
     <ItemGroup>
       <PackageReference Include="bootstrap" Version="5.3.2" />

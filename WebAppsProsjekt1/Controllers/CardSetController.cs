@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using WebAppsProsjekt1.Models;
 using WebAppsProsjekt1.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using WebAppsProsjekt1.DAL;
 
 
 namespace WebAppsProsjekt1.Controllers;
@@ -14,11 +15,11 @@ namespace WebAppsProsjekt1.Controllers;
 public class CardSetController : Controller
 {
 
-    private readonly CardDbContext _cardDbContext;
+    private readonly ICardRepository _cardRepository;
 
-    public CardSetController(CardDbContext cardDbContext)
+    public CardSetController(ICardRepository cardRepository)
     {
-        _cardDbContext = cardDbContext;
+        _cardRepository = cardRepository;
     }
 
     public async Task<ActionResult> Table()
@@ -27,7 +28,7 @@ public class CardSetController : Controller
         //var cardListViwModel = new CardListViwModel(cardset, "Table");
         //return View(cardListViwModel);
 
-        List<Cardset> cardsets = await _cardDbContext.Cardsets.ToListAsync();
+        var cardsets = await _cardRepository.GetAll();
         var cardListViewModel = new CardListViwModel(cardsets, "Table");
         return View(cardListViewModel);
 
@@ -35,9 +36,9 @@ public class CardSetController : Controller
 
     public async Task<IActionResult> Details(int id)
     {
-        var cardset = await _cardDbContext.Cardsets.FirstOrDefaultAsync(i => i.CardSetId == id);
+        var cardset = await _cardRepository.GetCardById(id);
         if (cardset == null)
-            return NotFound();
+            return BadRequest("Card not found. ");
         return View(cardset);
     }
 
@@ -55,8 +56,8 @@ public class CardSetController : Controller
     {
         if (ModelState.IsValid)
         {
-            _cardDbContext.Cardsets.Add(card); //referst do database 
-            await _cardDbContext.SaveChangesAsync();
+             
+            await _cardRepository.Create(card);
             return RedirectToAction(nameof(Table));
         }
         return View(card);
@@ -67,7 +68,7 @@ public class CardSetController : Controller
     [Authorize]
     public async Task<IActionResult> Edit(int id)
     {
-        var card = await _cardDbContext.Cardsets.FindAsync(id);
+        var card = await _cardRepository.GetCardById(id);
         if ( card == null)
         {
             return NotFound();
@@ -81,8 +82,7 @@ public class CardSetController : Controller
     {
         if (ModelState.IsValid)
         {
-            _cardDbContext.Cardsets.Update(card);
-            await _cardDbContext.SaveChangesAsync();
+            await _cardRepository.Update(card);
             return RedirectToAction(nameof(Table));
         }
         return View(card);
@@ -92,7 +92,7 @@ public class CardSetController : Controller
     [Authorize]
     public async Task<IActionResult> Delete(int id)
     {
-        var card = await _cardDbContext.Cardsets.FindAsync(id);
+        var card = await _cardRepository.GetCardById(id);
         if (card == null)
         {
             return NotFound();
@@ -104,14 +104,16 @@ public class CardSetController : Controller
     [Authorize]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        var card = await _cardDbContext.Cardsets.FindAsync(id);
-        if (card == null)
-        {
-            return NotFound();
-        }
-        _cardDbContext.Cardsets.Remove(card);
-        _cardDbContext.SaveChanges();
+        await _cardRepository.Delete(id);
         return RedirectToAction(nameof(Table));
+        //var card = await _cardDbContext.Cardsets.FindAsync(id);
+        //if (card == null)
+        //{
+        //    return NotFound();
+        //}
+        //_cardDbContext.Cardsets.Remove(card);
+        //_cardDbContext.SaveChanges();
+        //return RedirectToAction(nameof(Table));
     }
 
 }
