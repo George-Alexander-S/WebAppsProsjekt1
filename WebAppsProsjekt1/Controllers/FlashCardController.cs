@@ -14,33 +14,53 @@ public class FlashCardController : Controller
     {
         _cardDbContext = cardDbContext;
     }
-    
+  
 
-    public async Task<ActionResult> FlashCardTable()
+    public async Task<ActionResult> FlashCardTable(int id)
     {
-        List<FlashCard> cards = await _cardDbContext.FlashCards.ToListAsync();
+        var cards = await _cardDbContext.FlashCards.Where(c => c.CardsetId == id).ToListAsync();
+        
         return View(cards);
 
     }
     
     [HttpGet]
     [Authorize]
-    public IActionResult CreateCard()
+    public IActionResult CreateCard(int id)
     {
-        return View();
+        var createCardViewModel = new CreateCardViewModel();
+        createCardViewModel.csid = id;
+        return View(createCardViewModel);
     }
 
     [HttpPost]
     [Authorize]
-    public async Task<IActionResult> CreateCard(FlashCard flashcard)
+    public async Task<IActionResult> CreateCard(FlashCard flashCard)
     {
-        if (ModelState.IsValid)
+        try
         {
-            _cardDbContext.FlashCards.Add(flashcard); //referst do database 
+            var cardset = _cardDbContext.Cardsets.Find(flashCard.CardsetId);
+            if (cardset == null)
+            {
+                return BadRequest();
+            }
+
+            var newCard = new FlashCard
+            {
+                CardsetId = flashCard.CardsetId,
+                Cardset = cardset,
+                FrontText = flashCard.FrontText,
+                BackText = flashCard.BackText,
+                ImageUrl = flashCard.ImageUrl
+            };
+            _cardDbContext.FlashCards.Add(newCard);
             await _cardDbContext.SaveChangesAsync();
-            return RedirectToAction(nameof(FlashCardTable));
+            return RedirectToAction("CreateCard", "FlashCard", new { id = flashCard.CardsetId});
         }
-        return View(flashcard);
+        catch
+        {
+            return BadRequest("OrderItem creation failed.");
+        }
     }
 
     [HttpGet("/GetCards")]

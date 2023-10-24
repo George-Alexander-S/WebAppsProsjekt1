@@ -12,3 +12,4 @@ WebAppsProsjekt1/wwwroot/lib/package-lock.json
 WebAppsProsjekt1/wwwroot/lib/package.json
 WebAppsProsjekt1/wwwroot/package-lock.json
 *.db
+WebAppsProsjekt1/Properties/launchSettings.json
