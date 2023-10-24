@@ -18,10 +18,10 @@ public class FlashCardController : Controller
 
     public async Task<ActionResult> FlashCardTable(int id)
     {
-        var cards = await _cardDbContext.FlashCards.Where(c => c.CardsetId == id).ToListAsync();
-        
-        return View(cards);
-
+        var cardset = await _cardDbContext.Cardsets.FirstOrDefaultAsync(c => c.CardSetId == id);
+        if (cardset == null)
+            return NotFound();
+        return View(cardset);
     }
     
     [HttpGet]
@@ -64,9 +64,9 @@ public class FlashCardController : Controller
     }
 
     [HttpGet("/GetCards")]
-    public async Task<IActionResult> GetCards()
+    public async Task<IActionResult> GetCards(int id)
     {
-        List<FlashCard> cards = await _cardDbContext.FlashCards.ToListAsync();
+        List<FlashCard> cards = await _cardDbContext.FlashCards.Where(c => c.CardsetId == id).ToListAsync();
         return Json(cards);
     }
     

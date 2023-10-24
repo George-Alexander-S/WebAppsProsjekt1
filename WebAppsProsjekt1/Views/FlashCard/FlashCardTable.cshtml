@@ -1,6 +1,6 @@
-@model IEnumerable<WebAppsProsjekt1.Models.FlashCard>
+@model Cardset
 
-<!DOCTYPE html>
+  <!DOCTYPE html>
 
 <html>
 <head>
@@ -21,10 +21,10 @@
         }
         
         let contentPresent = false;
-        
         $.ajax({
             url: "/GetCards",
             method: "GET",
+            data: {id: @Model.CardSetId},
             success: function (cards) {
                 document.querySelector(".carousel-inner").innerHTML = makeSlides(cards);
                 contentPresent = true;
@@ -33,7 +33,7 @@
                 console.log(error)
             }
         });
-        
+       
        const makeSlides = (cards) => {
            let html = '';
            cards.forEach((item, index) => {

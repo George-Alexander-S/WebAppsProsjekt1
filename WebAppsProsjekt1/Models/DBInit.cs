@@ -13,7 +13,7 @@ public static class DBInit
 
         using var serviceScope = app.ApplicationServices.CreateScope();
         CardDbContext context = serviceScope.ServiceProvider.GetRequiredService<CardDbContext>();
-        context.Database.EnsureDeleted();
+        //context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
 
 
