@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebAppsProsjekt1.Models;
 using Microsoft.AspNetCore.Identity;
+using WebAppsProsjekt1.DAL;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("CardDbContextConnection") ?? throw new InvalidOperationException("Connection string 'CardDbContextConnection' not found.");
@@ -21,6 +22,7 @@ builder.Services.AddSession();
 
 builder.Services.AddDistributedMemoryCache();
 
+builder.Services.AddScoped<ICardRepository, CardRepository>();
 
 var app = builder.Build();
 
