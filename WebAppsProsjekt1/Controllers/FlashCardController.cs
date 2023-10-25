@@ -61,7 +61,51 @@ public class FlashCardController : Controller
         }
         catch
         {
-            return BadRequest("OrderItem creation failed.");
+            return BadRequest("CreateCard action failed.");
+        }
+    }
+    
+    [HttpGet]
+    [Authorize]
+    public async Task<IActionResult> EditCard(int id)
+    {
+        var createCardViewModel = new CreateCardViewModel();
+        createCardViewModel.flashCard = await _cardRepository.GetFlashcardByFlashcardId(id);
+        if (createCardViewModel.flashCard == null)
+        {
+            return BadRequest("Flashcard not found");
+        }
+        createCardViewModel.csid = createCardViewModel.flashCard.CardsetId;
+        return View(createCardViewModel);
+    }
+
+    [HttpPost]
+    [Authorize]
+    public async Task<IActionResult> EditCard(FlashCard flashCard)
+    {
+        try
+        {
+            var cardset = await _cardRepository.GetCardsetById(flashCard.CardsetId);
+            if (cardset == null)
+            {
+                return BadRequest();
+            }
+
+            var newCard = new FlashCard
+            {
+                FlashcardId = flashCard.FlashcardId,
+                CardsetId = flashCard.CardsetId,
+                Cardset = cardset,
+                FrontText = flashCard.FrontText,
+                BackText = flashCard.BackText,
+                ImageUrl = flashCard.ImageUrl
+            };
+            await _cardRepository.EditCard(newCard);
+            return RedirectToAction("EditFlashCards", "CardSet", new { id = flashCard.CardsetId});
+        }
+        catch
+        {
+            return BadRequest("EditCard action failed.");
         }
     }
 
@@ -70,5 +114,11 @@ public class FlashCardController : Controller
     {
         List<FlashCard> cards = await _cardRepository.GetCardsByCardsetId(id);
         return Json(cards);
+    }
+
+    public async Task<ActionResult> DeleteCard(int cardId, int setId)
+    {
+        await _cardRepository.DeleteCard(cardId);
+        return RedirectToAction("EditFlashCards", "CardSet", new { id = setId});
     }
 }

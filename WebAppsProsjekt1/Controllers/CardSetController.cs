@@ -106,14 +106,6 @@ public class CardSetController : Controller
     {
         await _cardRepository.Delete(id);
         return RedirectToAction(nameof(Table));
-        //var card = await _cardDbContext.Cardsets.FindAsync(id);
-        //if (card == null)
-        //{
-        //    return NotFound();
-        //}
-        //_cardDbContext.Cardsets.Remove(card);
-        //_cardDbContext.SaveChanges();
-        //return RedirectToAction(nameof(Table));
     }
     
     [Authorize]

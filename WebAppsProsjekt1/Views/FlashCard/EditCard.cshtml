@@ -1,0 +1,112 @@
+@model CreateCardViewModel
+
+<link rel="stylesheet" asp-href-include="~/css/createCard.css">
+<style>
+   
+</style>
+
+<body style="background-color:#04364A">
+<h2 style="color: white; display: block; margin-left: auto; margin-right: auto; margin-top: 80px; width: fit-content;">Edit your flashcard</h2>
+
+
+<div class="container rounded p-2" style="background-color:#176B87">
+    <form asp-action="EditCard">
+        
+        <div class="form-group">
+            <label asp-for="flashCard.FrontText"></label><span class="text-danger">*</span>
+            <input asp-for="flashCard.FrontText" class="form-control" id="FrontText"/>
+            <span asp-validation-for="flashCard.FrontText" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="flashCard.BackText"></label><span class="text-danger">*</span>
+            <input asp-for="flashCard.BackText" class="form-control" id="BackText"/>
+            <span asp-validation-for="flashCard.BackText" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="flashCard.ImageUrl"></label>
+            <input asp-for="flashCard.ImageUrl" class="form-control" id="ImageUrl"/>
+            <span asp-validation-for="flashCard.ImageUrl" class="text-danger"></span>
+        </div>
+        <input type="hidden" asp-for="flashCard.CardsetId" />
+        <input type="hidden" asp-for="flashCard.FlashcardId" />
+        <div class="m-2">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a asp-controller="CardSet" asp-action="EditFlashCards" asp-route-id="@Model.csid" class="btn btn-secondary">Back to Cardset</a>
+            <a asp-controller="FlashCard" asp-action="FlashCardTable" asp-route-id="@Model.csid" class="btn btn-secondary">Play this set instead!</a>
+        </div>
+    </form>
+</div>
+
+<div class="container pt-3" style="display: flex; justify-content: center; background-color:#176B87">
+    <div class="flippable" onclick="clickSpinner()">
+        <div class="flip-card-inner" id="flip-card-inner">
+            <div class="flip-card-frontside">
+                <h3 id="FrontSpinText"></h3>
+                <img src=""></img>
+                <div id="frontSidePreview">
+                </div>
+            </div>
+            <div class="flip-card-backside">
+                <h3 id="BackSpinText"></h3>
+                <img src=""></img>
+                <div id="backSidePreview"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="background-color: #176B87">
+            <h2 class="pb-1" style="text-align: center; color: white;">Side by side view of both sides:</h2>
+    <div class="rounded" style="display: flex; justify-content: space-evenly; align-items: center">
+        <div class="flip-card-front mb-3 m-3" style="">
+            <div class="card-header" style="text-align: center; color: white;">Front of card</div>
+            <div class="card-body">
+                <h3 class="card-title">
+                    <div id="FrontPreview"></div></h3>
+            </div>
+        </div>
+        <div class="flip-card-back mb-3 m-3" style="">
+            <div class="card-header" style="text-align: center; color: white;">Back of card</div>
+            <div class="card-body">
+                <h3 class="card-title">
+                    <div id="BackPreview"></div></h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script>
+
+let flipped = false;
+
+function clickSpinner() {
+    if (flipped === false) {
+        document.getElementById("flip-card-inner").style.transform = "rotateY(180deg)";
+        flipped = true;
+    } else {
+        document.getElementById("flip-card-inner").style.transform = "rotateY(360deg)";
+        flipped = false;
+    }
+}
+
+function cardPreview() {
+        document.addEventListener("DOMContentLoaded", function () {
+        let frontText = document.getElementById("FrontText");
+        let backText = document.getElementById("BackText");
+
+        frontText.addEventListener("input", function () {
+            document.getElementById("FrontPreview").textContent = frontText.value;
+            document.getElementById("FrontSpinText").textContent = frontText.value;
+        });
+        
+        backText.addEventListener("input", function () {
+            document.getElementById("BackPreview").textContent = backText.value;
+            document.getElementById("BackSpinText").textContent = backText.value;
+        });
+    });
+}
+
+cardPreview();
+</script>

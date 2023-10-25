@@ -18,7 +18,8 @@
                     <img src="@flashCard.ImageUrl" alt="Card Image" style="max-width: 80px; max-height: 80px;" />
                 </td>
                 <td>
-                    Fyll inn Edit og Delete-knapper her
+                    <a asp-controller="FlashCard" asp-action="EditCard" asp-route-id="@flashCard.FlashcardId">Edit</a>
+                    <a asp-controller="FlashCard" asp-action="DeleteCard" asp-route-cardId="@flashCard.FlashcardId" asp-route-setId="@flashCard.CardsetId">Delete</a>
                 </td>
             </tr>
         }

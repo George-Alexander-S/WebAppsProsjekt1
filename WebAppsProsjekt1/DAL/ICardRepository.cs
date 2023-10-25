@@ -12,5 +12,8 @@ public interface ICardRepository
     Task<bool> Delete(int id);
     Task AddCard(FlashCard flashCard);
     Task<List<FlashCard>> GetCardsByCardsetId(int id);
+    Task<FlashCard?> GetFlashcardByFlashcardId(int id);
+    Task EditCard(FlashCard flashCard);
+    Task<bool> DeleteCard(int id);
 }
 
