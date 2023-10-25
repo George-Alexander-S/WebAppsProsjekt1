@@ -17,6 +17,9 @@
         <a class="btn btn-secondary"
            asp-controller="FlashCard"
            asp-action="FlashCardTable" asp-route-id="@Model.CardSetId">Play this set!</a>
+        <a class="btn btn-secondary"
+           asp-controller="CardSet"
+           asp-action="EditFlashcards" asp-route-id="@Model.CardSetId">Edit cards in this set</a>
     </div>
 </div>
 

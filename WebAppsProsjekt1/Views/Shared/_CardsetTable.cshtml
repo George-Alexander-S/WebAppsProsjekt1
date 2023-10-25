@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Cardset>
+
+
+
+<div class="container">
+
+    <table class='table table-striped'>
+        <tr>
+            <th>Id</th>
+            <th>Cardset Name</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+        @foreach (var cardset in Model)
+        {
+            <tr>
+                <td>@cardset.CardSetId</td>
+                <td>
+                    <a asp-controller="Cardset"
+                       asp-action="Details"
+                       asp-route-id="@cardset.CardSetId">@cardset.CardSetName</a>
+                </td>
+                <td>@cardset.Description</td>
+                <td>
+                    <img src="@cardset.ImageUrl" alt="Card Image" style="max-width: 80px; max-height: 80px;" />
+                </td>
+                <td>
+                    <a asp-controller="CardSet" asp-action="Edit" asp-route-id="@cardset.CardSetId">Edit</a>
+                    <a asp-controller="CardSet" asp-action="Delete" asp-route-id="@cardset.CardSetId">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <p>
+        <a class="btn btn-secondary"
+           asp-controller="Cardset"
+           asp-action="Create">Create New cad set</a>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back to Home</a>
+    </p>
+</div>

@@ -19,7 +19,7 @@ public class CardRepository : ICardRepository
         return await _db.Cardsets.ToListAsync();
     }
 
-    public async Task<Cardset?> GetCardById(int id)
+    public async Task<Cardset?> GetCardsetById(int id)
     {
         return await _db.Cardsets.FindAsync(id);
     }
@@ -49,6 +49,16 @@ public class CardRepository : ICardRepository
         return true;
     }
 
+    public async Task AddCard(FlashCard flashCard)
+    {
+        _db.FlashCards.Add(flashCard);
+        await _db.SaveChangesAsync();
+        
+    }
+
+    public async Task<List<FlashCard>> GetCardsByCardsetId(int id)
+    {
+        return await _db.FlashCards.Where(c => c.CardsetId == id).ToListAsync();
+    }
 
 }
-

@@ -3,25 +3,28 @@ using Microsoft.EntityFrameworkCore;
 using WebAppsProsjekt1.Models;
 using WebAppsProsjekt1.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using WebAppsProsjekt1.DAL;
 
 namespace WebAppsProsjekt1.Controllers;
 
 public class FlashCardController : Controller
 {
-    private readonly CardDbContext _cardDbContext;
+    private readonly ICardRepository _cardRepository;
 
-    public FlashCardController(CardDbContext cardDbContext)
+    public FlashCardController(ICardRepository cardRepository)
     {
-        _cardDbContext = cardDbContext;
+        _cardRepository = cardRepository;
     }
   
 
     public async Task<ActionResult> FlashCardTable(int id)
     {
-        var cardset = await _cardDbContext.Cardsets.FirstOrDefaultAsync(c => c.CardSetId == id);
-        if (cardset == null)
+        var card = await _cardRepository.GetCardsetById(id);
+        if ( card == null)
+        {
             return NotFound();
-        return View(cardset);
+        }
+        return View(card);
     }
     
     [HttpGet]
@@ -39,7 +42,7 @@ public class FlashCardController : Controller
     {
         try
         {
-            var cardset = _cardDbContext.Cardsets.Find(flashCard.CardsetId);
+            var cardset = await _cardRepository.GetCardsetById(flashCard.CardsetId);
             if (cardset == null)
             {
                 return BadRequest();
@@ -53,8 +56,7 @@ public class FlashCardController : Controller
                 BackText = flashCard.BackText,
                 ImageUrl = flashCard.ImageUrl
             };
-            _cardDbContext.FlashCards.Add(newCard);
-            await _cardDbContext.SaveChangesAsync();
+            await _cardRepository.AddCard(newCard);
             return RedirectToAction("CreateCard", "FlashCard", new { id = flashCard.CardsetId});
         }
         catch
@@ -66,9 +68,7 @@ public class FlashCardController : Controller
     [HttpGet("/GetCards")]
     public async Task<IActionResult> GetCards(int id)
     {
-        List<FlashCard> cards = await _cardDbContext.FlashCards.Where(c => c.CardsetId == id).ToListAsync();
+        List<FlashCard> cards = await _cardRepository.GetCardsByCardsetId(id);
         return Json(cards);
     }
-    
-    
 }

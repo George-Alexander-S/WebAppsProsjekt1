@@ -36,7 +36,7 @@ public class CardSetController : Controller
 
     public async Task<IActionResult> Details(int id)
     {
-        var cardset = await _cardRepository.GetCardById(id);
+        var cardset = await _cardRepository.GetCardsetById(id);
         if (cardset == null)
             return BadRequest("Card not found. ");
         return View(cardset);
@@ -68,7 +68,7 @@ public class CardSetController : Controller
     [Authorize]
     public async Task<IActionResult> Edit(int id)
     {
-        var card = await _cardRepository.GetCardById(id);
+        var card = await _cardRepository.GetCardsetById(id);
         if ( card == null)
         {
             return NotFound();
@@ -92,7 +92,7 @@ public class CardSetController : Controller
     [Authorize]
     public async Task<IActionResult> Delete(int id)
     {
-        var card = await _cardRepository.GetCardById(id);
+        var card = await _cardRepository.GetCardsetById(id);
         if (card == null)
         {
             return NotFound();
@@ -114,6 +114,13 @@ public class CardSetController : Controller
         //_cardDbContext.Cardsets.Remove(card);
         //_cardDbContext.SaveChanges();
         //return RedirectToAction(nameof(Table));
+    }
+    
+    [Authorize]
+    public async Task<IActionResult> EditFlashCards(int id)
+    {
+        List<FlashCard> cards = await _cardRepository.GetCardsByCardsetId(id);
+        return View(cards);
     }
 
 }
