@@ -6,11 +6,12 @@
 </style>
 
 <body style="background-color:#04364A">
-<h2 style="color: white; display: block; margin-left: auto; margin-right: auto; margin-top: 80px; width: fit-content;">Make a FlashCard!</h2>
+<h2 style="color: white; display: block; margin-left: auto; margin-right: auto; margin-top: 80px; width: fit-content;">Edit your flashcard</h2>
 
 
 <div class="container rounded p-2" style="background-color:#176B87">
-    <form asp-action="CreateCard">
+    <form asp-action="EditCard">
+        
         <div class="form-group">
             <label asp-for="flashCard.FrontText"></label><span class="text-danger">*</span>
             <input asp-for="flashCard.FrontText" class="form-control" id="FrontText"/>
@@ -26,11 +27,12 @@
             <input asp-for="flashCard.ImageUrl" class="form-control" id="ImageUrl"/>
             <span asp-validation-for="flashCard.ImageUrl" class="text-danger"></span>
         </div>
-        <input type="hidden" asp-for="flashCard.CardsetId" value ="@Model.csid"/>
+        <input type="hidden" asp-for="flashCard.CardsetId" />
+        <input type="hidden" asp-for="flashCard.FlashcardId" />
         <div class="m-2">
             <button type="submit" class="btn btn-primary">Save</button>
-            <a asp-controller="CardSet" asp-action="Details" asp-route-id="@Model.csid" class="btn btn-secondary">Back to Cardset</a>
-            <a asp-controller="FlashCard" asp-action="FlashCardTable" asp-route-id="@Model.csid" class="btn btn-secondary">Play this set!</a>
+            <a asp-controller="CardSet" asp-action="EditFlashCards" asp-route-id="@Model.csid" class="btn btn-secondary">Back to Cardset</a>
+            <a asp-controller="FlashCard" asp-action="FlashCardTable" asp-route-id="@Model.csid" class="btn btn-secondary">Play this set instead!</a>
         </div>
     </form>
 </div>

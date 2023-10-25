@@ -38,13 +38,13 @@ public class CardRepository : ICardRepository
 
     public async Task<bool> Delete(int id)
     {
-        var card = await _db.Cardsets.FindAsync(id);
-        if (card == null)
+        var cardset = await _db.Cardsets.FindAsync(id);
+        if (cardset == null)
         {
             return false;
         }
 
-        _db.Cardsets.Remove(card);
+        _db.Cardsets.Remove(cardset);
         await _db.SaveChangesAsync();
         return true;
     }
@@ -61,4 +61,27 @@ public class CardRepository : ICardRepository
         return await _db.FlashCards.Where(c => c.CardsetId == id).ToListAsync();
     }
 
+    public async Task<FlashCard?> GetFlashcardByFlashcardId(int id)
+    {
+        return await _db.FlashCards.FindAsync(id);
+    }
+    
+    public async Task EditCard(FlashCard flashCard)
+    {
+        _db.FlashCards.Update(flashCard);
+        await _db.SaveChangesAsync();
+    }
+
+    public async Task<bool> DeleteCard(int id)
+    {
+        var flashCard = await _db.FlashCards.FindAsync(id);
+        if (flashCard == null)
+        {
+            return false;
+        }
+
+        _db.FlashCards.Remove(flashCard);
+        await _db.SaveChangesAsync();
+        return true;
+    }
 }
