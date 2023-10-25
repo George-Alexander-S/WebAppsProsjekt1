@@ -26,11 +26,7 @@
             <input asp-for="flashCard.ImageUrl" class="form-control" id="ImageUrl"/>
             <span asp-validation-for="flashCard.ImageUrl" class="text-danger"></span>
         </div>
-        <div class="form-group">
-            <label asp-for="flashCard.CardsetId"></label>
-            <input asp-for="flashCard.CardsetId" class="form-control" id="ImageUrl" value="@Model.csid"/>
-            <span asp-validation-for="flashCard.CardsetId" class="text-danger"></span>
-        </div>
+        <input type="hidden" asp-for="flashCard.CardsetId" value ="@Model.csid"/>
         <div class="m-2">
             <button type="submit" class="btn btn-primary">Save</button>
             <a asp-controller="CardSet" asp-action="Details" asp-route-id="@Model.csid" class="btn btn-secondary">Back to Cardset</a>
