@@ -1,13 +1,28 @@
 @model Cardset
 
-  <!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width"/>
     <link rel="stylesheet" asp-href-include="~/css/createCard.css">
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <title>FlashCards</title>
+    
+<body style="min-height: 92vh; display: flex; flex-direction: column">
+<div style="text-align: center; flex: 1 0 auto">
+    <div id="cardCarousel" class="carousel slide" style="max-width: 700px; margin-left: auto; margin-right: auto;" data-bs-interval="false">
+        <div class="carousel-inner">
+        </div>
+        <button style="background-color: #38598b; position: absolute; top: 50%; -ms-transform: translateY(-50%); transform:  translateY(-50%);" class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button style="background-color: #38598b; position: absolute; top: 50%; -ms-transform: translateY(-50%); transform:  translateY(-50%)" class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+<div style="justify-content: center" id="snackbar">
+    <h4>Click the card to reveal the answer!</h4>
+</div>
+</body>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
     
     <script>
         function clickSpinner(id) {
@@ -33,8 +48,8 @@
                 console.log(error)
             }
         });
-       
-       const makeSlides = (cards) => {
+        
+        const makeSlides = (cards) => {
            let html = '';
            cards.forEach((item, index) => {
                let activeClass = index === 0 ? 'active' : '';
@@ -47,12 +62,12 @@
                        <div class="flip-card-inner" id="${item.flashcardId}" onclick="clickSpinner(this.id)">
                          <div class="flip-card-frontside">
                            <h3 class="front-text" id="FrontSpinText">${item.frontText}</h3>
-                           <img src=""></img>
+                           <img src="">
                            <div id="frontSidePreview"></div>
                          </div>
                          <div class="flip-card-backside">
                            <h3 class="back-text" id="BackSpinText">${item.backText}</h3>
-                           <img src=""></img>
+                           <img src="">
                            <div id="backSidePreview"></div>
                          </div>
                        </div>
@@ -64,25 +79,12 @@
            });
            return html;
        };
-        </script>
-</head>
-<body>
-<div style="text-align: center">
-    <div id="cardCarousel" class="carousel slide" style="max-width: 700px; margin-left: auto; margin-right: auto;" data-bs-interval="false">
-        <div class="carousel-inner">
-        </div>
-        <button style="background-color: #38598b; position: absolute; top: 50%; -ms-transform: translateY(-50%); transform:  translateY(-50%);" class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button style="background-color: #38598b; position: absolute; top: 50%; -ms-transform: translateY(-50%); transform:  translateY(-50%)" class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-        @*
-    <h4 class="position-absolute top-0 start-50 translate-middle">Click to reveal the answer!</h4>
-*@
-    </div>
-</div>
-</body>
-</html>
+       
+    // Snackbar:
+    window.onload = function() {
+      var x = document.getElementById("snackbar");
+      x.className = "show";
+      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }
+    </script>
+

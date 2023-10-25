@@ -1,8 +1,10 @@
 ﻿@model Cardset
 
-<h3 class="my-5">
+<body style="min-height: 92vh; display: flex; flex-direction: column">
+
+<h1 style="text-align: center; margin-top: 30px; margin-bottom: 30px">
     @Model.CardSetName
-</h3>
+</h1>
 
 <div class="row gx-5">
     <img alt="@Model.CardSetName" src="@Model.ImageUrl" class="img-fluid col-5" />
@@ -22,4 +24,5 @@
            asp-action="EditFlashcards" asp-route-id="@Model.CardSetId">Edit cards in this set</a>
     </div>
 </div>
+</body>
 
