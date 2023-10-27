@@ -59,11 +59,13 @@ public class CardRepository : ICardRepository
         
     }
 
+    //Returns a list of FlashCards that belong to a single cardset.
     public async Task<List<FlashCard>> GetCardsByCardsetId(int id)
     {
         return await _db.FlashCards.Where(c => c.CardsetId == id).ToListAsync();
     }
 
+    //Returns a single FlashCard object by its primary key (FlashcardId)
     public async Task<FlashCard?> GetFlashcardByFlashcardId(int id)
     {
         return await _db.FlashCards.FindAsync(id);
