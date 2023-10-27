@@ -10,10 +10,10 @@ public class CardDbContext : IdentityDbContext
 {
     public CardDbContext(DbContextOptions<CardDbContext> options) : base(options)
     {
-        //Database.EnsureCreated(); // crate a database
+        //Database.EnsureCreated();
     }
 
-    public DbSet<Cardset> Cardsets { get; set; } // get cards and other info from ViewModels
+    public DbSet<Cardset> Cardsets { get; set; }
     public DbSet<FlashCard> FlashCards { get; set; }
 }
 

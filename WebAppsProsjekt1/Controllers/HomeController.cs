@@ -1,12 +1,12 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using WebAppsProsjekt1.Models;
 using WebAppsProsjekt1.ViewModels;
 
 namespace WebAppsProsjekt1.Controllers;
 
 public class HomeController : Controller
 {
+    // This logger is currently unused, as logging is not implemented.
     private readonly ILogger<HomeController> _logger;
 
     public HomeController(ILogger<HomeController> logger)

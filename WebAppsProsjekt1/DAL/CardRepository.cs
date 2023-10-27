@@ -24,18 +24,21 @@ public class CardRepository : ICardRepository
         return await _db.Cardsets.FindAsync(id);
     }
 
+    //Create function for Cardset
     public async Task Create(Cardset cardset)
     {
         _db.Cardsets.Add(cardset);
         await _db.SaveChangesAsync();
     }
 
+    //Update function for Cardset
     public async Task Update(Cardset cardset)
     {
         _db.Cardsets.Update(cardset);
         await _db.SaveChangesAsync();
     }
 
+    //Delete function for Cardset
     public async Task<bool> Delete(int id)
     {
         var cardset = await _db.Cardsets.FindAsync(id);
@@ -66,6 +69,7 @@ public class CardRepository : ICardRepository
         return await _db.FlashCards.FindAsync(id);
     }
     
+    //The FlashCard parameter object must contain a FlashcardId value matching that of a FlashCard in the database, otherwise a new FlashCard is added (functionally becoming the AddCard method).
     public async Task EditCard(FlashCard flashCard)
     {
         _db.FlashCards.Update(flashCard);

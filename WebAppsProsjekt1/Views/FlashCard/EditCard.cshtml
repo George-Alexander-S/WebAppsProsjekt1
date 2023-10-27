@@ -22,11 +22,7 @@
             <input asp-for="flashCard.BackText" class="form-control" id="BackText"/>
             <span asp-validation-for="flashCard.BackText" class="text-danger"></span>
         </div>
-        <div class="form-group">
-            <label asp-for="flashCard.ImageUrl"></label>
-            <input asp-for="flashCard.ImageUrl" class="form-control" id="ImageUrl"/>
-            <span asp-validation-for="flashCard.ImageUrl" class="text-danger"></span>
-        </div>
+        <input type="hidden" asp-for="flashCard.ImageUrl" />
         <input type="hidden" asp-for="flashCard.CardsetId" />
         <input type="hidden" asp-for="flashCard.FlashcardId" />
         <div class="m-2">

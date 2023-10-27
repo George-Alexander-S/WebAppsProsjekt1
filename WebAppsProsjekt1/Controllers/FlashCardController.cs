@@ -81,6 +81,11 @@ public class FlashCardController : Controller
 
     [HttpPost]
     [Authorize]
+
+    //The EditCard functions very similarly to CreateCard.
+    //The main difference with Edit, is that the form in the View will supply a FlashcardId that already belongs to a FlashCard,
+    //which allows the already existing row in the database to be updated, instead of creating a new row with an auto-incremented value for FlashcardId
+    
     public async Task<IActionResult> EditCard(FlashCard flashCard)
     {
         try
@@ -109,6 +114,8 @@ public class FlashCardController : Controller
         }
     }
 
+    //This method returns a list of all FlashCard objects in a given Cardset, converted to a JSON object. It is used by the carousel in the FlashCard/FlashCardTable view.
+
     [HttpGet("/GetCards")]
     public async Task<IActionResult> GetCards(int id)
     {
@@ -116,6 +123,7 @@ public class FlashCardController : Controller
         return Json(cards);
     }
 
+    [Authorize]
     public async Task<ActionResult> DeleteCard(int cardId, int setId)
     {
         await _cardRepository.DeleteCard(cardId);
