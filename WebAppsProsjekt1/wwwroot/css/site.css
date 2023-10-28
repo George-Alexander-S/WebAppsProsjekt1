@@ -1,9 +1,32 @@
-body, html {
+html, body {
     font-size: 16px;
+    height: 100%;
     margin: 0;
-    margin-top: 2.5em;
     padding: 0;
-    width: 100%;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
+}
+
+header {
+    grid-area: header;
+}
+
+main {
+    /* Header height */
+    padding-top: 87px;
+    grid-area: main;
+}
+
+footer {
+    grid-area: footer;
+    margin-top: 78px;
 }
 
 .container-fluid {
