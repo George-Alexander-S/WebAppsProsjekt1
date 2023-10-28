@@ -26,7 +26,6 @@ main {
 
 footer {
     grid-area: footer;
-    margin-top: 78px;
 }
 
 .container-fluid {
@@ -89,4 +88,8 @@ footer {
 
 .sign-button {
     max-width: 150px;
+}
+
+.table .img-thumbnail {
+    max-width: 5rem;
 }

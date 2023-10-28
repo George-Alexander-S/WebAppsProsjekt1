@@ -1,32 +1,30 @@
 ﻿@model Cardset
 
-    <div class="container pt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <h2>Create New Card Set</h2>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2>Create New Card Set</h2>
 
-                <form asp-action="Create">
-                    <div class="form-group">
-                        <label asp-for="CardSetName"></label><span class="text-danger">*</span>
-                        <input asp-for="CardSetName" class="form-control" />
-                        <span asp-validation-for="CardSetName" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Description"></label>
-                        <input asp-for="Description" class="form-control" />
-                        <span asp-validation-for="Description" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="ImageUrl"></label>
-                        <input asp-for="ImageUrl" class="form-control" />
-                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
-                    </div>
-
-                    <div class="mt-4">
-                        <button type="submit" class="btn btn-primary">Create</button>
-                        <a asp-action="Table" class="btn btn-secondary">Back to Table View</a>
-                    </div>
-                </form>
+        <form class="mt-4" asp-action="Create">
+            <div class="form-group">
+                <label asp-for="CardSetName"></label><span class="text-danger">*</span>
+                <input asp-for="CardSetName" class="form-control" />
+                <span asp-validation-for="CardSetName" class="text-danger"></span>
             </div>
-        </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl"></label>
+                <input asp-for="ImageUrl" class="form-control" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary">Create</button>
+                <a asp-action="Table" class="btn btn-outline-secondary">Back to Table View</a>
+            </div>
+        </form>
     </div>
+</div>

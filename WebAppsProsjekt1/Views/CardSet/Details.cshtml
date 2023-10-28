@@ -1,28 +1,37 @@
 ﻿@model Cardset
 
-<body style="min-height: 92vh; display: flex; flex-direction: column">
-
-<h1 style="text-align: center; margin-top: 30px; margin-bottom: 30px">
+<h1 class="text-center my-5">
     @Model.CardSetName
 </h1>
 
-<div class="row gx-5">
-    <img alt="@Model.CardSetName" src="@Model.ImageUrl" class="img-fluid col-5" />
-    <div class="col-7">
-        <h5>@Model.Description</h5>
-        <p><a href="/CardSet/Table">Back to Table View</a></p>
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img alt="@Model.CardSetName" src="@Model.ImageUrl" class="img-fluid rounded-start" />
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.Description</h5>
+                        <div>
+                            <a class="btn btn-primary"
+                               asp-controller="FlashCard"
+                               asp-action="FlashCardTable" asp-route-id="@Model.CardSetId">Play this set!</a>
+                            <a class="btn btn-outline-primary"
+                               asp-controller="FlashCard"
+                               asp-action="CreateCard" asp-route-id="@Model.CardSetId">Create New flashcard</a>
+                            <a class="btn btn-outline-secondary"
+                               asp-controller="CardSet"
+                               asp-action="EditFlashcards" asp-route-id="@Model.CardSetId">Edit cards in this set</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="m-2">
-        <a class="btn btn-secondary"
-           asp-controller="FlashCard"
-           asp-action="CreateCard" asp-route-id="@Model.CardSetId">Create New flashcard</a>
-        <a class="btn btn-secondary"
-           asp-controller="FlashCard"
-           asp-action="FlashCardTable" asp-route-id="@Model.CardSetId">Play this set!</a>
-        <a class="btn btn-secondary"
-           asp-controller="CardSet"
-           asp-action="EditFlashcards" asp-route-id="@Model.CardSetId">Edit cards in this set</a>
+    <div class="col-md-8 text-center mt-2">
+        <a class="text-center" href="/CardSet/Table">Back to Table View</a>
     </div>
 </div>
-</body>
 

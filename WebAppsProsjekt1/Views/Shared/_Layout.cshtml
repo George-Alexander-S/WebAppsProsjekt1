@@ -39,7 +39,7 @@
             </div>
         </nav>
     </header>
-    <main class="conteiner-fluid h-100" role="main">
+    <main class="@(ViewContext.HttpContext.Request.Path == "/" ? "container-fluid overflow-auto pb-4" : "container my-5")" role="main">
         @RenderBody()
         @RenderSection("Scripts", required: false)
     </main>
