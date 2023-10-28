@@ -8,6 +8,22 @@
 
 <div class="row justify-content-center">
     <div class="col-md-8 justify-content-center">
+        <div class="flippable my-5 m-auto" onclick="clickSpinner()">
+            <div class="flip-card-inner" id="flip-card-inner">
+                <div class="flip-card-frontside">
+                    <h3 id="FrontSpinText"></h3>
+                    <img src=""></img>
+                    <div id="frontSidePreview">
+                    </div>
+                </div>
+                <div class="flip-card-backside">
+                    <h3 id="BackSpinText"></h3>
+                    <img src=""></img>
+                    <div id="backSidePreview"></div>
+                </div>
+            </div>
+        </div>
+
         <form asp-action="EditCard">
             <div class="form-group">
                 <label asp-for="flashCard.FrontText"></label><span class="text-danger">*</span>
@@ -31,23 +47,9 @@
             </div>
         </form>
 
-        <div class="flippable my-5 m-auto" onclick="clickSpinner()">
-            <div class="flip-card-inner" id="flip-card-inner">
-                <div class="flip-card-frontside">
-                    <h3 id="FrontSpinText"></h3>
-                    <img src=""></img>
-                    <div id="frontSidePreview">
-                    </div>
-                </div>
-                <div class="flip-card-backside">
-                    <h3 id="BackSpinText"></h3>
-                    <img src=""></img>
-                    <div id="backSidePreview"></div>
-                </div>
-            </div>
-        </div>
-   
-        <div class="m-auto">
+
+
+        <div class="mt-5 m-auto">
             <h4 class="text-center">Side by side view of both sides:</h4>
             <div class="rounded" style="display: flex; justify-content: space-evenly; align-items: center">
                 <div class="flip-card-front m-3">

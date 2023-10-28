@@ -6,28 +6,6 @@
 
 <div class="row justify-content-center">
     <div class="col-md-8 justify-content-center">
-        <form asp-action="CreateCard">
-            <div class="form-group">
-                <label asp-for="flashCard.FrontText"></label><span class="text-danger">*</span>
-                <input asp-for="flashCard.FrontText" class="form-control" id="FrontText" />
-                <span asp-validation-for="flashCard.FrontText" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="flashCard.BackText"></label><span class="text-danger">*</span>
-                <input asp-for="flashCard.BackText" class="form-control" id="BackText" />
-                <span asp-validation-for="flashCard.BackText" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="flashCard.ImageUrl" />
-            <input type="hidden" asp-for="flashCard.CardsetId" value="@Model.csid" />
-            <div class="d-flex mt-4 justify-content-between">
-                <button type="submit" class="btn btn-primary">Save</button>
-                <div>
-                    <a asp-controller="FlashCard" asp-action="FlashCardTable" asp-route-id="@Model.csid" class="btn btn-secondary">Play this set!</a>
-                    <a asp-controller="CardSet" asp-action="Details" asp-route-id="@Model.csid" class="btn btn-outline-secondary">Back to Cardset</a>
-                </div>
-            </div>
-        </form>
-
         <div class="flippable my-5 m-auto" onclick="clickSpinner()">
             <div class="flip-card-inner" id="flip-card-inner">
                 <div class="flip-card-frontside">
@@ -42,8 +20,29 @@
             </div>
         </div>
 
+        <form asp-action="CreateCard">
+            <div class="form-group">
+                <label asp-for="flashCard.FrontText"></label><span class="text-danger">*</span>
+                <input asp-for="flashCard.FrontText" class="form-control" id="FrontText" />
+                <span asp-validation-for="flashCard.FrontText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="flashCard.BackText"></label><span class="text-danger">*</span>
+                <input asp-for="flashCard.BackText" class="form-control" id="BackText" />
+                <span asp-validation-for="flashCard.BackText" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="flashCard.ImageUrl" />
+            <input type="hidden" asp-for="flashCard.CardsetId" value="@Model.csid" />
+            <div class="d-flex g-4 mt-4 justify-content-between">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <div>
+                    <a asp-controller="FlashCard" asp-action="FlashCardTable" asp-route-id="@Model.csid" class="btn btn-secondary">Play this set!</a>
+                    <a asp-controller="CardSet" asp-action="Details" asp-route-id="@Model.csid" class="btn btn-outline-secondary">Back to Cardset</a>
+                </div>
+            </div>
+        </form>
 
-        <div class="m-auto">
+        <div class="mt-5 m-auto">
             <h4 class="pb-1">Side by side view of both sides:</h4>
             <div class="rounded" style="display: flex; justify-content: space-evenly; align-items: center">
                 <div class="flip-card-front m-3">

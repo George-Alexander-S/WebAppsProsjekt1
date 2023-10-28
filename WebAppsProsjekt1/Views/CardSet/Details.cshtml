@@ -5,7 +5,7 @@
 </h1>
 
 <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-8 col-sm-12">
         <div class="card">
             <div class="row g-0">
                 <div class="col-md-4">
@@ -14,7 +14,7 @@
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">@Model.Description</h5>
-                        <div>
+                        <div class="d-flex gap-2">
                             <a class="btn btn-primary"
                                asp-controller="FlashCard"
                                asp-action="FlashCardTable" asp-route-id="@Model.CardSetId">Play this set!</a>
