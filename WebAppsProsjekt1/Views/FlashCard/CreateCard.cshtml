@@ -36,13 +36,11 @@
         <div class="flip-card-inner" id="flip-card-inner">
             <div class="flip-card-frontside">
                 <h3 id="FrontSpinText"></h3>
-                <img src=""></img>
                 <div id="frontSidePreview">
                 </div>
             </div>
             <div class="flip-card-backside">
                 <h3 id="BackSpinText"></h3>
-                <img src=""></img>
                 <div id="backSidePreview"></div>
             </div>
         </div>
@@ -86,7 +84,6 @@ function clickSpinner() {
 }
 
 function cardPreview() {
-        document.addEventListener("DOMContentLoaded", function () {
         let frontText = document.getElementById("FrontText");
         let backText = document.getElementById("BackText");
 
@@ -99,7 +96,6 @@ function cardPreview() {
             document.getElementById("BackPreview").textContent = backText.value;
             document.getElementById("BackSpinText").textContent = backText.value;
         });
-    });
 }
 
 cardPreview();
