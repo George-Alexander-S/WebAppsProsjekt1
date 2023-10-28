@@ -33,11 +33,11 @@ footer {
     grid-area: footer;
 }
 
-a {
+a, .nav-link, .btn-link {
     color: var(--primary);
 }
 
-a:hover {
+a:hover, .nav-link:hover, .btn-link:hover {
     color: var(--primary-dark);
 }
 
@@ -124,14 +124,6 @@ a:hover {
 
 .nav-pills .nav-link.active {
     background-color: var(--primary);
-}
-
-.nav-link, .btn-link {
-    color: var(--primary);
-}
-
-.nav-link:hover, .btn-link:hover {
-    color: var(--primary-dark);
 }
 
 @media (max-width: 575.98px) {
