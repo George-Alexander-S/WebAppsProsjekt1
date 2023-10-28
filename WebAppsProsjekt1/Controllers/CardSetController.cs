@@ -25,11 +25,11 @@ public class CardSetController : Controller
     public async Task<ActionResult> Table()
     {
         //var cardset = GetCardsets();
-        //var cardListViwModel = new CardListViwModel(cardset, "Table");
+        //var cardListViwModel = new CardListViewModel(cardset, "Table");
         //return View(cardListViwModel);
 
         var cardsets = await _cardRepository.GetAll();
-        var cardListViewModel = new CardListViwModel(cardsets, "Table");
+        var cardListViewModel = new CardListViewModel(cardsets, "Table");
         return View(cardListViewModel);
 
     }
